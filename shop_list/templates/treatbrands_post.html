@@ -1,0 +1,8 @@
+<h1>「#{{ treatbrads.brandname }}」の投稿一覧</h1>
+<ul>
+  {% for post in object_list %}
+  <li><a href="{% url 'post_detail' post.pk %}">{{ post.shopname }}</a></li>
+  {% empty %}
+  <li>まだ投稿はありません。</li>
+  {% endfor %}
+</ul>

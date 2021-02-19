@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+    <!doctype html>
+{% block title %}Add Shop {% endblock %}
+{% block header %}
+
+{% endblock header %}
+
+{% block content %}
+    {% if user.is_authenticated %}  
+    <div class="container" style="padding:20px 0"></div>
+    <form method="post"　enctype="multipart/form-data" action="">
+    {% csrf_token %}
+    {{ form }}
+    <div class="form-group text-right" style="padding:20px 0"></div>
+    <button type="submit" name="submit">追加</button> -->
+    </div>
+    </form>
+    </div>
+    {% else %}
+    リストの追加にはログインが必要です
+    <a href="{% url 'login' %}" class="btn btn-primary" role="button" aria-pressed="true">ログイン</a>
+    {% endif %}
+{% endblock %} 
+
+

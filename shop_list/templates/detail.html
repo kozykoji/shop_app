@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Shop detail{% endblock %} 
+{% block header %}
+<link rel='stylesheet' type="text/css" href="{% static 'style.css' %}">
+{% endblock header %}
+
+{% block content %}
+{% for treatbrands in all_items.treat_brand.all %}
+<div class="container">
+    <div class="card" >
+       <h5 class="card-header">{{all_items.shopname}}</h5>
+       <div class="card-body">
+           <h5 class="card-title">取扱ブランド:{{all_items.treatbrand}}</h5>
+           <h5 class="card-title">取扱ブランド:{{treatbrands.brandname}}</h5>
+           <h5 class="card-title">ジャンル:{{all_items.genre}}</h5>
+           <h5 class="card-title">古着の取扱:{{all_items.treatused}}</h5>
+           <h5 class="card-title">住所:{{all_items.address}}</h5>
+           <h5 class="card-title">ホームページURL:{{all_items.hpurl}}</h5>
+           <a href="{% url 'home' %}" class="btn btn-primary">戻る</a>
+       </div>
+   　</div>
+   </div>
+<!-- Reveiw Form -->
+<div>
+    　　<h1 class="text-secondary m-2">REVIEW FORM</h1>
+        <form action="." method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-12">
+                    {{ review_form.review }}
+                </div>
+                <div class="col-12 mt-2">
+                    <button type="submit" class=”btn btn-primary w-25”>レビューを投稿</button>
+                </div>
+            </div>
+        </form>
+    </div>
+     
+    <!-- Review List -->
+    <div class="m-10">
+        <h1 class="text-secondary m-2">REVIEW</h1>
+        {% for review in reviews %}
+        <div class="card mb-3" style="width: 100%;">
+            <div class="card-body">
+                <div class="border-bottom">
+                    {{ review.review|linebreaks }}
+                </div>
+                <div class="badge badge-pill badge-primary float-right mt-2">
+                    Published by {{ review.author }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock content %}

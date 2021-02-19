@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Shop detail{% endblock %} 
+{% block header %}
+<link rel='stylesheet' type="text/css" href="{% static 'style.css' %}">
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+    <div class="card" >
+       <h5 class="card-header">{{object.shopname}}</h5>
+       <div class="card-body">
+           <h5 class="card-title">取扱ブランド:{{object.treatbrand}}</h5> 
+           <h5 class="card-title">取扱ブランド:
+            {% for treatbrands in object.treat_brand.all %}
+            {{treatbrands.brandname}}
+           {% endfor %}
+           </h5>
+           <h5 class="card-title">ジャンル:{{object.genre}}</h5>
+           <h5 class="card-title">古着の取扱:{{object.treatused}}</h5>
+           <h5 class="card-title">住所:{{object.address}}</h5>
+           <h5 class="card-title">ホームページURL:{{object.hpurl}}</h5>
+           <a href="{% url 'index' %}" class="btn btn-primary">戻る</a>
+       </div>
+   　</div>
+   </div>
+   <article class="comment-area">
+    <a class="btn btn-primary my-3" href="{% url 'comment_form' object.pk %}">コメントを投稿する</a>
+    {% include "comments.html" %}
+  </article>
+{% endblock content %} 
+
+

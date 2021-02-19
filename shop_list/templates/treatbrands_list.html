@@ -1,0 +1,9 @@
+<h1>タグ一覧</h1>
+<ul>
+  {% for treatbrads in object_list %}
+  <li>{{ treatbrads.brandname }} </li>
+  {% empty %}
+  <li>タグはありません。</li>
+  {% endfor %}
+  <li><a href="{% url 'treatbrads_post' treatbrads.slug %}">{{ treatbrads.brandname }} </a></li>
+</ul>

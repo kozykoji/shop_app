@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+  Shop List
+{% endblock %}
+{% block content %}
+<h1>投稿一覧</h1>
+<table class="table table-bordered">
+  {% for post in object_list %}
+  <tr class="table-secondary"></tr>
+  <td class="striker"><a href="{% url 'post_detail' post.pk %}">{{ post.shopname }}</a>
+  
+  </td>
+  </tr>
+  {% endfor %}
+  <!-- <aside class="col-md-4">
+    {% include "sidebar.html" %}
+  </aside>
+</table>
+<button class="btn btn-outline-secondary my-2 my-sm-0" onclick="location.href='addtoform/'"  role="button">リストの追加</button> -->
+
+{% endblock %}

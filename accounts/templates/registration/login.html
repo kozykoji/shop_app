@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+ 
+{% block title %}Log In{% endblock title%}
+ 
+{% block content %}
+<h2>Log In</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class=”btn btn-primary w-25”>Log In</button>
+</form>
+<a class="link" href="{% url 'signup' %}">アカウントを作成するならこちら</a>
+{% endblock content %}
+<!-- <div class="container">
+    <form class="form-signin" method='post'>{% csrf_token %}
+    <h1 class="h3 mb-3 fw-normal">ログインしてください</h1>
+    <label for="inputEmail" class="visually-hidden">Username</label>
+    <input type="text" id="inputEmail" class="form-control" placeholder="username" name="username_data" required autofocus>
+    <label for="inputPassword" class="visually-hidden">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password_data" required>
+    <div class="checkbox mb-3">
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">LOGIN</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
+    <a class="link" href="{% url 'signup' %}">アカウントを作成するならこちら</a>
+</form>
+</div> -->

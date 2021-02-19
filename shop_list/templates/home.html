@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+  Shop List
+{% endblock %}
+{% block content %}
+
+{% if all_items %}
+    <table class="table table-bordered">
+        {% for shop in all_items %}
+        <tr class="table-secondary">
+            <td class="striker"><a href="{% url 'detail' shop.pk %}">{{ shop.shopname }}</a>
+        </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+<button class="btn btn-outline-secondary my-2 my-sm-0" onclick="location.href='addtoform/'"  role="button">リストの追加</button>
+
+{% endblock %}
